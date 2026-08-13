@@ -1,0 +1,25 @@
+// Last updated: 13/08/2026, 15:51:10
+class Solution {
+    public int islandPerimeter(int[][] grid) {
+        int perimeter = 0;
+
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+
+                if (grid[i][j] == 1) {
+                    perimeter += 4;
+
+                    if (i + 1 < grid.length && grid[i + 1][j] == 1) {
+                        perimeter -= 2;
+                    }
+
+                    if (j + 1 < grid[0].length && grid[i][j + 1] == 1) {
+                        perimeter -= 2;
+                    }
+                }
+            }
+        }
+
+        return perimeter;
+    }
+}

@@ -1,0 +1,19 @@
+-- Last updated: 13/08/2026, 15:50:45
+SELECT DISTINCT s.*
+FROM Stadium s
+JOIN Stadium s1 ON s.id = s1.id - 1
+JOIN Stadium s2 ON s1.id = s2.id - 1
+WHERE s.people >= 100 AND s1.people >= 100 AND s2.people >= 100
+UNION
+SELECT DISTINCT s.*
+FROM Stadium s
+JOIN Stadium s1 ON s.id = s1.id + 1
+JOIN Stadium s2 ON s1.id = s2.id + 1
+WHERE s.people >= 100 AND s1.people >= 100 AND s2.people >= 100
+UNION
+SELECT DISTINCT s.*
+FROM Stadium s
+JOIN Stadium s1 ON s.id = s1.id - 1
+JOIN Stadium s2 ON s.id = s2.id + 1
+WHERE s.people >= 100 AND s1.people >= 100 AND s2.people >= 100
+ORDER BY visit_date;
